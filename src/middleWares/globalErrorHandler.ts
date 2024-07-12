@@ -4,7 +4,6 @@ import AppError from '../errors/AppError';
 import { TErrorSources } from '../errors/errors.types';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  console.log(err.statusCode);
   //setting default values
   let statusCode = 500;
   let message = 'Something went wrong!';
@@ -16,7 +15,7 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   ];
 if (err instanceof AppError) {
     statusCode = err?.statusCode;
-    message = err.message;
+    message: err?.message,
     errorSources = [
       {
         path: '',
@@ -27,7 +26,7 @@ if (err instanceof AppError) {
     message = err.message;
     errorSources = [
       {
-        path: '',
+        path: 'Duplicate Error',
         message: err?.message,
       },
     ];
