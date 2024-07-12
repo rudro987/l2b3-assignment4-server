@@ -1,4 +1,4 @@
-import { Brands } from './products.constant';
+import { Brands } from './product.constant';
 import { ProductsModel, TProducts } from './products.interface'
 import { Schema, model } from 'mongoose'
 
@@ -21,7 +21,7 @@ const productsSchema = new Schema<TProducts, ProductsModel>({
   },
   brand: {
     type: String,
-    enum: ['MK', 'Ducky', 'Varmilo', 'Keychron', 'Pulsar', 'Leopold', 'Realforce', 'Lamzu'],
+    enum: Brands,
     required: [true, 'Product brand is required'],
   },
   price: {

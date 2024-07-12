@@ -12,11 +12,42 @@ const createProductsIntoDB = async (payload: TProducts) => {
 }
 
 const getAllProductsFromDB = async () => {
-  const result = Products.find();
+  const result = await Products.find();
   return result
 }
 
+const getSingleProductFromDB = async (id: string) => {
+  const result = await Products.findById(id);
+  return result
+}
+
+const updateProductIntoDB = async (id: string, payload: Partial<TProducts>) => {
+  
+  const result = await Products.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
+const deleteStudentFromDB = async (id: string) => {
+    const deletedStudent = await Products.findByIdAndUpdate(
+      id,
+      { isDeleted: true },
+      { new: true },
+    );
+
+    if (!deletedStudent) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete student');
+    }
+
+    return deletedStudent;
+};
+
 export const ProductServices = {
   createProductsIntoDB,
-  getAllProductsFromDB
+  getAllProductsFromDB,
+  getSingleProductFromDB,
+  updateProductIntoDB,
+  deleteStudentFromDB
 }

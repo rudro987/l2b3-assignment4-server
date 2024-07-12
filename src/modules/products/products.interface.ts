@@ -1,10 +1,12 @@
 import { Model } from "mongoose";
 
+export type TBrands = 'MK' | 'Ducky' | 'Varmilo' | 'Keychron' | 'Pulsar' | 'Leopold' | 'Realforce' | 'Lamzu';
+
 export type TProducts = {
   name: string;
   description: string;
   image: string;
-  brand: 'MK' | 'Ducky' | 'Varmilo' | 'Keychron' | 'Pulsar' | 'Leopold' | 'Realforce' | 'Lamzu';
+  brand: TBrands;
   price: number;
   rating: number;
   quantity: number;
