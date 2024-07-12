@@ -1,9 +1,10 @@
+import { Brands } from './products.constant';
 import { ProductsModel, TProducts } from './products.interface'
 import { Schema, model } from 'mongoose'
 
 //main schema
 
-const productsSchema = new Schema<TProducts>({
+const productsSchema = new Schema<TProducts, ProductsModel>({
   name: {
     type: String,
     required: [true, 'Product name is required'],
@@ -20,10 +21,7 @@ const productsSchema = new Schema<TProducts>({
   },
   brand: {
     type: String,
-    enum: {
-        values: ['MK', 'Ducky', 'Varmilo', 'Keychron', 'Pulsar', 'Leopold', 'Realforce', 'Lamzu'],
-        message: '{VALUE} is not a valid Brand',
-    },
+    enum: ['MK', 'Ducky', 'Varmilo', 'Keychron', 'Pulsar', 'Leopold', 'Realforce', 'Lamzu'],
     required: [true, 'Product brand is required'],
   },
   price: {

@@ -1,0 +1,9 @@
+{
+  "name": "test",
+  "description": "test product",
+  "image": "image file",
+  "brand": "MK",
+  "price": 10,
+  "rating": 5,
+  "quantity": 3
+}
