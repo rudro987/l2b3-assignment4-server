@@ -11,6 +11,12 @@ const createProductsIntoDB = async (payload: TProducts) => {
   return result
 }
 
+const getAllProductsFromDB = async () => {
+  const result = Products.find();
+  return result
+}
+
 export const ProductServices = {
   createProductsIntoDB,
+  getAllProductsFromDB
 }

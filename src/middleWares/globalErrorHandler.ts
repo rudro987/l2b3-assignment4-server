@@ -2,6 +2,8 @@ import { ErrorRequestHandler } from 'express';
 import config from '../config';
 import AppError from '../errors/AppError';
 import { TErrorSources } from '../errors/errors.types';
+import handleZodError from '../errors/handleZodError';
+import { ZodError } from 'zod';
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
   //setting default values
@@ -13,16 +15,21 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
       message: 'Something went wrong',
     },
   ];
-if (err instanceof AppError) {
-    statusCode = err?.statusCode;
-    message: err?.message,
-    errorSources = [
-      {
-        path: '',
-        message: err?.message,
-      },
-    ];
-  } else if (err instanceof Error) {
+if (err instanceof ZodError) {
+  const simplifiedError = handleZodError(err);
+  statusCode = simplifiedError?.statusCode;
+  message = simplifiedError?.message;
+  errorSources = simplifiedError?.errorSources;
+} else if (err instanceof AppError) {
+  statusCode = err?.statusCode;
+  message: err?.message,
+  errorSources = [
+    {
+      path: '',
+      message: err?.message,
+    },
+  ];
+} else if (err instanceof Error) {
     message = err.message;
     errorSources = [
       {
