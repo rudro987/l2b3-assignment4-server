@@ -54,8 +54,8 @@ productsSchema.pre('find', function (next) {
   });
 
   //creating a custom static method
-  productsSchema.statics.isUserExists = async function (id: string) {
-    const existingProduct = await Products.findOne({ id });
+  productsSchema.statics.isProductExists = async function (name: string) {
+    const existingProduct = await Products.findOne({name});
     return existingProduct;
   };
 
