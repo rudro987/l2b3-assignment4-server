@@ -14,7 +14,7 @@ app.use(cors())
 app.use('/api/v1', router);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Appolo level-2 assignment 4 server!')
+  res.send('Hello from ctrl+alt+del server!')
 })
 
 app.use(globalErrorHandler);

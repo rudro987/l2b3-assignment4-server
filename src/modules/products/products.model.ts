@@ -9,7 +9,7 @@ const productsSchema = new Schema<TProducts, ProductsModel>({
     type: String,
     required: [true, 'Product name is required'],
     trim: true,
-    maxlength: [20, 'Name can not be more than 20 characters'],
+    maxlength: [50, 'Name can not be more than 50 characters'],
   },
   description: {
     type: String,

@@ -8,7 +8,7 @@ async function main() {
     await mongoose.connect(config.db_url as string)
     //server
     app.listen(config.port, () => {
-      console.log(`Server listening on port ${config.port}`)
+      console.log(`App listening on port ${config.port}`)
     })
   } catch (error) {
     console.error(error)
