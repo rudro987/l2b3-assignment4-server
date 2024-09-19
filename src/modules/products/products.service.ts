@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import { TProducts } from './products.interface'
 import { Products } from './products.model'
 import AppError from '../../errors/AppError';
+import QueryBuilder from '../../builder/QueryBuilder';
 
 const createProductsIntoDB = async (payload: TProducts) => {
   if(await Products.isProductExists(payload.name)){
@@ -11,8 +12,13 @@ const createProductsIntoDB = async (payload: TProducts) => {
   return result
 }
 
-const getAllProductsFromDB = async () => {
-  const result = await Products.find();
+const getAllProductsFromDB = async (query: Record<string, unknown>) => {
+
+  const searchableFields = ['name', 'brand']
+
+  const productQuery = new QueryBuilder(Products.find(), query).search(searchableFields).filter().sort().paginate().fields();
+
+  const result = await productQuery.modelQuery;
   return result
 }
 
