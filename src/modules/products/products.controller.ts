@@ -12,7 +12,7 @@ const createProduct = catchAsync(async (req, res) => {
 })
 
 const getAllProducts = catchAsync(async (req, res) => {
-    const result = await ProductServices.getAllProductsFromDB();
+    const result = await ProductServices.getAllProductsFromDB(req.query);
     res.status(httpStatus.OK).json({
       success: true,
       message: 'Products fetched successfully!',
