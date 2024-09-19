@@ -10,7 +10,7 @@ export type TProducts = {
   price: number;
   rating: number;
   quantity: number;
-  isDeleted: boolean;
+  isDeleted?: boolean;
 }
 
 export interface ProductsModel extends Model<TProducts> {
