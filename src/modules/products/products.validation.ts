@@ -22,7 +22,7 @@ export const updateProductValidationSchema = z.object({
     brand: z.enum([...Brands] as [string, ...string[]]).optional(),
     price: z.number().positive('Price must be a positive number').optional(),
     rating: z.number().positive('Rating must be a positive number').optional(),
-    quantity: z.number().positive('Quantity must be a positive number').optional(),
+    quantity: z.number().int().min(0, "Quantity must be a non-negative integer"),
     isDeleted: z.boolean().optional(),
   }),
 })
