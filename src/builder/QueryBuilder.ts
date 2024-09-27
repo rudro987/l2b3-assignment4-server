@@ -31,16 +31,12 @@ class QueryBuilder<T> {
   filter() {
     const queryObj = { ...this.query }
     
-    console.log('filter: ', queryObj);
-  
-    // List of fields to exclude from query
     const excludeFields = ['searchTerm', 'sort', 'limit', 'page', 'fields']
+    
     excludeFields.forEach((el) => delete queryObj[el])
   
-    // Create a new object to store modified query parameters
     const advancedFilters: { [key: string]: any } = {}
   
-    // Iterate over the queryObj to modify range-based filters
     Object.keys(queryObj).forEach((key) => {
       if (key.includes('min')) {
         const field = key.replace('min', '').toLowerCase()
@@ -55,12 +51,10 @@ class QueryBuilder<T> {
         }
         advancedFilters[field]['$lte'] = queryObj[key]
       } else {
-        // Directly copy other fields without modification
         advancedFilters[key] = queryObj[key]
       }
     })
   
-    // Use the advancedFilters object for filtering in MongoDB
     this.modelQuery = this.modelQuery.find(advancedFilters as FilterQuery<T>)
   
     return this

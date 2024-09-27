@@ -14,4 +14,4 @@ async function main() {
     console.error(error)
   }
 }
-main()
+main();
