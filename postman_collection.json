@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "913cb6b0-5ea1-40d8-bc10-4d210d15a5bb",
+		"name": "Ctrl-alt-esc-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28855067"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "create-product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Ducky Silicone Dust Coverasdasd\",\r\n  \"description\": \"Fullsize silicone dust cover keeps out dust, crumbs, and hair. Can be used on most 104 or 108 key keyboards. Fits all Ducky fullsize keyboards. ISO compatible\",\r\n  \"image\": \"https://i.ibb.co.com/9TnztXj/1286-B64-ZH-Silicone-Dust-Cover.webp\",\r\n  \"brand\": \"Ducky\",\r\n  \"price\": 12,\r\n  \"rating\": 4.5,\r\n  \"quantity\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{ph-local-url}}/products/create-product"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{ph-local-url}}/products"
+					},
+					"response": []
+				},
+				{
+					"name": "Get single product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{ph-local-url}}/products/66ec85609806c0c1f01a4de8"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 14,\r\n    \"quantity\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{ph-local-url}}/products/66f8056cb0bb8e440d3742f2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{ph-local-url}}/products/66f80689b0bb8e440d3742f7"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
