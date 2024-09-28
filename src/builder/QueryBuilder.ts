@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FilterQuery, Query } from 'mongoose'
 
 class QueryBuilder<T> {
@@ -11,8 +12,6 @@ class QueryBuilder<T> {
 
   search(searchableFields: string[]) {
     const searchTerm = this?.query?.searchTerm
-
-    console.log(searchTerm)
 
     if (searchTerm) {
       this.modelQuery = this.modelQuery.find({

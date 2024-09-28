@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
 import { ErrorRequestHandler } from 'express';
 import config from '../config';
 import AppError from '../errors/AppError';

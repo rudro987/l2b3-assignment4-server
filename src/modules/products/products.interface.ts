@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Model } from "mongoose";
 
 export type TBrands = 'MK' | 'Ducky' | 'Varmilo' | 'Keychron' | 'Pulsar' | 'Leopold' | 'Realforce' | 'Lamzu';
